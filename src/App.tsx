@@ -1,9 +1,10 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store/Stock';
-import { decrement, increment } from './store/Stock/Stock.store';
+import { asyncIncrement, decrement } from './store/Stock/Stock.store';
 import './styles/App.css';
 
-export function App(): JSX.Element {
+export const App = (): JSX.Element => {
   const dispatch = useDispatch();
   const stock = useSelector((state: RootState) => state.stock);
 
@@ -11,7 +12,7 @@ export function App(): JSX.Element {
     <div className="App">
       <div className="App-header">
         {stock.counter}
-        <button className="button" onClick={() => dispatch(increment())}>
+        <button className="button" onClick={() => dispatch(asyncIncrement(5))}>
           Increment
         </button>
         <button className="button" onClick={() => dispatch(decrement())}>
@@ -20,4 +21,4 @@ export function App(): JSX.Element {
       </div>
     </div>
   );
-}
+};

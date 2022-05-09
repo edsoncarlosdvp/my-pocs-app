@@ -1,7 +1,5 @@
+# Ignore artifacts:
 node_modules
-.next
-yarn.lock
-package-lock.json
 public
-coverage
-*.snap
+yarn.lock
+.cache
