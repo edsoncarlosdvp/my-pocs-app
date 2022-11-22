@@ -1,20 +1,17 @@
-import { useDispatch, useSelector } from "react-redux"
+import { Provider } from 'react-redux'
 import './App.css'
-import { RootState } from "./store/Stock"
-import { decrement, increment } from "./store/Stock/Stock.store"
+import { UserForm } from './Components/UserForm'
+import Store from './modules/Redux/ClientStore'
 
 export const App = (): JSX.Element => {
 
-    const dispatch = useDispatch()
-    const stock = useSelector((state: RootState) => state.stock)
-
     return (
-        <div className="App">
-            <div className="App-header">
-                {stock.counter}
-                <button className="button" onClick={() => dispatch(increment())}>Increment</button>
-                <button className="button" onClick={() => dispatch(decrement())}>Decrement</button>
+        <Provider store={Store}>
+            <div className="App">
+                <div className="App-header">
+                    <UserForm />
+                </div>
             </div>
-        </div>
+        </Provider>
     )
 }
